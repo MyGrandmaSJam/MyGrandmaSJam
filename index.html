@@ -6,49 +6,45 @@
 <title>My Cookie Crumble</title>
 
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
   color: #4b2a2a;
 
   background-image:
-    url("raspberry.png"),
-    url("lemon.png"),
+    url("./raspberry.png"),
+    url("./lemon.png"),
     linear-gradient(180deg, #fffdf7, #ffeef3);
 
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: left top, right bottom, center;
-  background-size: 250px, 250px, cover;
+  background-size: 220px, 220px, cover;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  padding: 60px 20px;
+  padding: 70px 20px;
   color: white;
 
   background-image:
-    linear-gradient(135deg, rgba(255,79,122,0.75), rgba(255,216,77,0.75), rgba(196,122,58,0.35)),
-    url("cookie1.png");
+    linear-gradient(135deg, rgba(255,79,122,0.7), rgba(255,216,77,0.7)),
+    url("./cookie1.png");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-  position: relative;
-  overflow: hidden;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.6);
 }
 
-h1 {
-  margin: 0;
-  font-size: 48px;
-}
+h1 { margin: 0; font-size: 48px; }
 
 .slogan {
   font-style: italic;
   font-size: 20px;
-  margin-top: 8px;
 }
 
 .tagline {
@@ -57,9 +53,7 @@ h1 {
 }
 
 /* NAVIGATION */
-nav {
-  margin-top: 20px;
-}
+nav { margin-top: 20px; }
 
 nav a {
   text-decoration: none;
@@ -92,34 +86,22 @@ section {
   box-shadow: 0 12px 35px rgba(0,0,0,0.1);
 }
 
-h2 {
-  margin-top: 0;
-  color: #ff4f7a;
-}
+h2 { color: #ff4f7a; }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  margin-top: 20px;
   padding: 15px 30px;
   border-radius: 35px;
   background: linear-gradient(135deg, #ff4f7a, #ffd84d);
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #ffd84d, #ff4f7a);
+  margin-top: 15px;
 }
 
 /* MENU */
-.menu-list {
-  list-style: none;
-  padding: 0;
-}
+.menu-list { list-style: none; padding: 0; }
 
 .menu-item {
   display: flex;
@@ -127,11 +109,6 @@ h2 {
   margin-bottom: 22px;
   border-bottom: 1px dashed #ffd1dc;
   padding-bottom: 12px;
-}
-
-.menu-desc {
-  font-size: 14px;
-  opacity: 0.85;
 }
 
 .price {
@@ -145,7 +122,6 @@ footer {
   padding: 30px;
   background: linear-gradient(135deg, #5a2c1f, #ff4f7a);
   color: white;
-  margin-top: 40px;
 }
 </style>
 </head>
@@ -153,27 +129,59 @@ footer {
 <body>
 
 <header>
-  <h1>My Cookie Crumble</h1>
-  <p class="slogan">Feels Like a Hug 🍪</p>
-  <p class="tagline">Warm cookies. Fresh from the oven. Straight to your door.</p>
+<h1>My Cookie Crumble</h1>
+<p class="slogan">Feels Like a Hug 🍪</p>
+<p class="tagline">Warm cookies. Fresh from the oven. Straight to your door.</p>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#about">About</a>
-    <a href="#contact">Order</a>
-  </nav>
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#about">About</a>
+<a href="#contact">Order</a>
+</nav>
 </header>
 
 <section id="home">
-  <div class="card">
-    <h2>Welcome to your sweet moment ✨</h2>
-    <p>We bake small batches daily — soft inside, golden outside, and packed with comfort.</p>
-    <p><strong>Delivery only (for now)</strong> — so you can enjoy the cozy without leaving home.</p>
-    <a class="btn" href="#contact">Order on WhatsApp</a>
-  </div>
+<div class="card">
+<h2>Welcome ✨</h2>
+<p>We bake small batches daily — soft inside, golden outside, and packed with comfort.</p>
+<a class="btn" href="#contact">Order Now</a>
+</div>
 </section>
 
 <section id="menu">
-  <div class="card">
+<div class="card">
+<h2>Our Cookies 🍋🍓</h2>
+
+<ul class="menu-list">
+<li class="menu-item"><span>Raspberry Lemon</span><span class="price">$4</span></li>
+<li class="menu-item"><span>Chocolate Chip</span><span class="price">$3.5</span></li>
+<li class="menu-item"><span>Double Choco</span><span class="price">$4.5</span></li>
+<li class="menu-item"><span>Box of 6</span><span class="price">$18</span></li>
+</ul>
+
+</div>
+</section>
+
+<section id="about">
+<div class="card">
+<h2>About Us</h2>
+<p>We bake happiness daily. Every cookie is made with love and warmth.</p>
+</div>
+</section>
+
+<section id="contact">
+<div class="card">
+<h2>Order 🔥</h2>
+<a class="btn" href="https://wa.me/212600000000">WhatsApp</a>
+</div>
+</section>
+
+<footer>
+Baked with love 🍪
+</footer>
+
+</body>
+</html>
+
 

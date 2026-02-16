@@ -1,412 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Cookie Crumble</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cookie Crumble</title>
 
-  <!-- CRUMBL-LIKE HEAVY ROUNDED FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      /* Lemon + Raspberry + Blueberry palette */
-      --rasp: #ff2f6d;
-      --rasp-soft:#ff7aa8;
-
-      --lemon:#ffd84d;
-      --lemon-soft:#fff2b3;
-
-      --blue:#2f6bff;
-      --blue-soft:#a9c4ff;
-
-      --ink:#111111;
-      --muted:#4b4b4b;
-
-      --card:#ffffff;
-      --border:#eee;
-      --shadow: 0 16px 40px rgba(0,0,0,0.10);
-      --radius: 22px;
-
-      --bar:#ffd1dc; /* soft pink like Crumbl bar */
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-  margin:0;
-  font-family: "Rubik", Arial, sans-serif;
-  color:#111;
-  background: 
-    linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.75)),
-    url("background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  overflow-x:hidden;
+<style>
+:root{
+  --pink:#ff4f8b;
+  --pinkSoft:#ffd6e5;
+  --lemon:#ffe66d;
+  --blue:#7da9ff;
+  --jam:#ffb38a;
+  --ink:#222;
 }
-   
-    .burger{
-      width:44px;
-      height:44px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,0.08);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-    }
-    .burger span{
-      display:block;
-      width:18px;
-      height:2px;
-      background:#111;
-      margin:2px 0;
-    }
 
-    /* center brand */
-    .brand{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      flex:1;
-    }
-    .brand img{
-      width:90px;   /* BIGGER LOGO */
-      height:90px;
-      border-radius:50%;
-      object-fit:cover;
-      background:#fff;
-      border: 3px solid #fff;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.10);
-    }
-    .brand-name{
-      font-family:"Fredoka", system-ui, Arial, sans-serif;
-      font-weight:700;
-      letter-spacing:0.3px;
-      font-size:28px;
-      line-height:1;
-    }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--ink);
+  background:#fff7fb;
+}
 
-    .cta{
-      min-width:140px;
-      display:flex;
-      justify-content:flex-end;
-    }
-    .btn-black{
-      display:inline-block;
-      padding: 12px 18px;
-      border-radius:999px;
-      background:#111;
-      color:#fff;
-      text-decoration:none;
-      font-weight:700;
-      border:1px solid #111;
-      transition:.2s;
-    }
-    .btn-black:hover{ transform:translateY(-1px); }
+/* ===== HEADER ===== */
+header{
+  background:#ffd6e5;
+  padding:25px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    /* HERO */
-    .hero{
-      max-width:1100px;
-      margin:0 auto;
-      padding: 42px 16px 10px;
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
 
-    .hero h1{
-      font-family:"Fredoka", system-ui, Arial, sans-serif;
-      font-weight:800;
-      font-size:72px;  /* CRUMBL-LIKE BIG HEADLINE */
-      line-height:0.95;
-      margin:0;
-      letter-spacing:-1px;
-    }
+.brand img{
+  width:90px;   /* BIG LOGO */
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  background:white;
+}
 
-    .hero p{
-      margin:16px 0 0;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.6;
-      max-width:720px;
-    }
+.brand h1{
+  font-size:32px;
+  font-weight:800;
+}
 
-    .chips{
-      display:flex;
-      gap:10px;
-      margin-top:16px;
-      flex-wrap:wrap;
-    }
-    .pill{
-      padding:10px 14px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,0.08);
-      font-weight:700;
-      font-size:14px;
-    }
-    .pill.r{ border-color: rgba(255,47,109,0.35); }
-    .pill.l{ border-color: rgba(255,216,77,0.55); }
-    .pill.b{ border-color: rgba(47,107,255,0.35); }
+.order-btn{
+  background:black;
+  color:white;
+  padding:12px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+}
 
-    /* NAV LINKS */
-    .navlinks{
-      max-width:1100px;
-      margin:0 auto;
-      padding: 10px 16px 18px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .navlinks a{
-      text-decoration:none;
-      color:#111;
-      font-weight:700;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,0.08);
-      transition:.2s;
-    }
-    .navlinks a:hover{ transform:translateY(-1px); }
+/* ===== HERO ===== */
+.hero{
+  padding:60px 40px;
+  background-image:url("assets/background.jpg"); /* YOUR BIG INGREDIENT PHOTO */
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
 
-    /* SECTION WRAP */
-    section{
-      padding: 34px 16px;
-    }
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.75); /* SOFT WHITE OVERLAY */
+}
 
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-    }
+.hero-content{
+  position:relative;
+  max-width:900px;
+}
 
-    .card{
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-    }
+.hero h2{
+  font-size:64px;
+  font-weight:800;
+}
 
-    .section-title{
-      font-family:"Fredoka", system-ui, Arial, sans-serif;
-      font-weight:800;
-      font-size:44px;
-      margin:0 0 10px;
-      letter-spacing:-0.6px;
-    }
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.85;
+  line-height:1.5;
+}
 
-    .section-sub{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:16px;
-    }
+/* ===== PILLS ===== */
+.ingredients{
+  margin-top:25px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
 
-    /* MENU LIST */
-    .menu-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-      margin-top:14px;
-    }
+.pill{
+  padding:10px 18px;
+  border-radius:25px;
+  font-weight:600;
+  border:2px solid transparent;
+}
 
-    .menu-item{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      padding:16px;
-      border-radius:18px;
-      border:1px solid rgba(0,0,0,0.07);
-      background:#fff;
-    }
+.lemon{background:#fff7c2;border-color:#ffe66d;}
+.raspberry{background:#ffd6e5;border-color:#ff4f8b;}
+.blueberry{background:#dbe4ff;border-color:#7da9ff;}
+.chips{background:#ffe4cc;border-color:#c47a3a;}
+.jam{background:#ffe8d6;border-color:#ffb38a;}
 
-    .menu-item strong{
-      font-size:16px;
-    }
-    .desc{
-      margin-top:6px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.45;
-    }
+/* ===== NAV PILLS ===== */
+.nav-pills{
+  margin-top:25px;
+  display:flex;
+  gap:10px;
+}
 
-    .price{
-      font-weight:900;
-      font-size:16px;
-      white-space:nowrap;
-      color:#111;
-    }
+.nav-pills a{
+  background:white;
+  padding:10px 20px;
+  border-radius:20px;
+  text-decoration:none;
+  color:black;
+  font-weight:600;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
 
-    /* Order button (palette) */
-    .btn{
-      display:inline-block;
-      margin-top:14px;
-      padding: 13px 18px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:800;
-      color:#111;
-      background: linear-gradient(135deg, var(--lemon), var(--rasp-soft), var(--blue-soft));
-      border: 1px solid rgba(0,0,0,0.10);
-      transition:.2s;
-    }
-    .btn:hover{ transform:translateY(-1px); }
+/* ===== SECTION ===== */
+.section{
+  padding:60px 40px;
+}
 
-    footer{
-      padding: 30px 16px 50px;
-      text-align:center;
-      color:var(--muted);
-      border-top:1px solid rgba(0,0,0,0.06);
-      margin-top: 22px;
-      background:#fff;
-    }
+.card{
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  max-width:900px;
+  margin:auto;
+}
 
-    /* Responsive */
-    @media (max-width:700px){
-      .hero h1{ font-size:52px; }
-      .brand img{ width:76px; height:76px; }
-      .brand-name{ font-size:22px; }
-      .section-title{ font-size:34px; }
-      .cta{ min-width:120px; }
-      .menu-item{ flex-direction:column; }
-      .price{ margin-top:10px; }
-    }
-  </style>
+.section h3{
+  font-size:36px;
+  color:var(--pink);
+  margin-bottom:15px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#ff4f8b;
+  color:white;
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  .hero h2{font-size:40px;}
+  .brand img{width:70px;height:70px;}
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
 
-    <header>
-      <div class="topbar">
-        <div class="left">
-          <div class="burger" title="Menu">
-            <div>
-              <span></span><span></span><span></span>
-            </div>
-          </div>
-          <strong style="font-weight:800;">Menu</strong>
-        </div>
+<header>
+  <div class="brand">
+    <img src="assets/logo.jpg">
+    <h1>My Cookie Crumble</h1>
+  </div>
 
-        <div class="brand">
-          <img src="logo.jpg" alt="My Cookie Crumble logo">
-          <div class="brand-name">My Cookie Crumble</div>
-        </div>
+  <a class="order-btn" href="#contact">Order Now</a>
+</header>
 
-        <div class="cta">
-          <a class="btn-black" href="#contact">Order Now</a>
-        </div>
-      </div>
-    </header>
+<section class="hero">
+  <div class="hero-content">
+    <h2>Classic Flavors</h2>
+    <p>
+      Warm, cozy cookies made for lemon lovers, berry fans,
+      and chocolate cravings. Fresh ingredients. Big comfort energy.
+    </p>
 
-    <div class="hero" id="home">
-      <h1>Classic Flavors</h1>
-      <p>
-        Warm, cozy cookies made for lemon lovers, berry fans, and chocolate cravings.
-        Fresh ingredients. Big comfort energy.
-      </p>
-
-      <div class="chips">
-        <div class="pill l">Lemon 🍋</div>
-        <div class="pill r">Raspberry 🍓</div>
-        <div class="pill b">Blueberry 🫐</div>
-      </div>
+    <div class="ingredients">
+      <span class="pill lemon">Lemon 🍋</span>
+      <span class="pill raspberry">Raspberry 🍓</span>
+      <span class="pill blueberry">Blueberry 🫐</span>
+      <span class="pill chips">Choco Chips 🍪</span>
+      <span class="pill jam">Jams 🍯</span>
     </div>
 
-    <div class="navlinks">
+    <div class="nav-pills">
       <a href="#home">Home</a>
       <a href="#menu">Menu</a>
       <a href="#about">About</a>
       <a href="#contact">Order</a>
     </div>
-
-    <section id="menu">
-      <div class="container">
-        <div class="card">
-          <div class="section-title">Pick Your Crumble</div>
-          <p class="section-sub">
-            Fresh, fruity, and cozy — the kind of cookies that make your day instantly better.
-          </p>
-
-          <div class="menu-grid">
-            <div class="menu-item">
-              <div>
-                <strong>Raspberry Lemon Glow</strong>
-                <div class="desc">Bright lemon + sweet raspberry swirl, soft and buttery.</div>
-              </div>
-              <div class="price">$4.00</div>
-            </div>
-
-            <div class="menu-item">
-              <div>
-                <strong>Blueberry Lemon Cloud</strong>
-                <div class="desc">Zesty lemon base with blueberry notes, ultra cozy.</div>
-              </div>
-              <div class="price">$4.25</div>
-            </div>
-
-            <div class="menu-item">
-              <div>
-                <strong>Classic Chocolate Chip</strong>
-                <div class="desc">Golden edges, gooey center, melty chocolate in every bite.</div>
-              </div>
-              <div class="price">$3.50</div>
-            </div>
-
-            <div class="menu-item">
-              <div>
-                <strong>Box of 6</strong>
-                <div class="desc">Perfect for sharing… or not 😄</div>
-              </div>
-              <div class="price">$18</div>
-            </div>
-          </div>
-
-          <a class="btn" href="#contact">Order on WhatsApp</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="card">
-          <div class="section-title">About Us</div>
-          <p class="section-sub">
-            My Cookie Crumble is all about one thing: <strong>turning ordinary days into cozy ones.</strong><br>
-            Quality ingredients, warm flavors, and that “one more bite” feeling.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="card">
-          <div class="section-title">Let’s Bake Your Order</div>
-          <p class="section-sub">
-            Message us on WhatsApp and tell us what you’re craving. We’ll handle the magic.
-          </p>
-
-          <!-- Replace with your WhatsApp number (country code + number, no +, no spaces) -->
-          <a class="btn" href="https://wa.me/212600000000" target="_blank" rel="noopener">
-            Order on WhatsApp
-          </a>
-
-          <p style="margin-top:12px; font-size:14px; color:var(--muted);">
-            Tip: Add delivery area + delivery hours here when you’re ready.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      Baked with love — always. 🍪✨
-    </footer>
-
   </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="card">
+    <h3>Pick Your Crumble</h3>
+    <p>Fresh, fruity, and cozy — cookies that brighten your day instantly.</p>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="card">
+    <h3>Order Now</h3>
+    <p>Message us on WhatsApp and we’ll bake the magic ✨</p>
+    <a class="order-btn" href="https://wa.me/212600000000">Order on WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  Baked with love 🍪✨
+</footer>
+
 </body>
 </html>
 

@@ -3,43 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Cookie Crumble</title>
+  <title>My Grandma'S Jam</title>
 
-  <!-- Rounded bold headline font + clean body font -->
+  <!-- Fonts (keep the same calligraphy style) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Theme: lemon + berries */
-      --pink: #ff5aa3;
-      --pink2:#ff86bd;
+      /* SAME palette */
+      --ink:#0f0f12;
+      --muted:#4d4d57;
+
+      --pink:#ff5aa3;
+      --pinkSoft:#ffd6ea;
+
       --lemon:#ffd84d;
-      --lemon2:#fff2b3;
-      --blue:#6e8bff;
-      --blue2:#a9b7ff;
+      --lemonSoft:#fff4bf;
 
-      --ink:#111111;
-      --muted:#4b4b4b;
+      --blue:#7b94ff;
+      --blueSoft:#dbe3ff;
 
-      --card: rgba(255,255,255,0.86);
-      --card2: rgba(255,255,255,0.92);
+      --jam:#ffb38a;
+      --jamSoft:#ffe8d6;
 
-      --shadow: 0 18px 50px rgba(0,0,0,0.12);
-      --radius: 26px;
+      --card: rgba(255,255,255,0.88);
+      --card2: rgba(255,255,255,0.94);
       --stroke: rgba(0,0,0,0.08);
+      --shadow: 0 18px 55px rgba(0,0,0,0.12);
+      --radius: 26px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-
     body{
       margin:0;
-      color:var(--ink);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
 
-      /* YOUR BACKGROUND FILE (root) */
+      /* uses your repo-root background file */
       background-image: url("assetsbackground.jpg");
       background-size: cover;
       background-position: center;
@@ -47,28 +50,26 @@
       overflow-x:hidden;
     }
 
-    /* Soft overlay so text is always readable */
-    .page-overlay{
+    .overlay{
       min-height:100vh;
       background:
-        radial-gradient(circle at 15% 10%, rgba(255,216,77,0.20), transparent 45%),
-        radial-gradient(circle at 85% 20%, rgba(110,139,255,0.18), transparent 50%),
-        radial-gradient(circle at 30% 90%, rgba(255,90,163,0.18), transparent 55%),
-        rgba(255,255,255,0.55);
-      backdrop-filter: blur(1px);
+        radial-gradient(circle at 15% 10%, rgba(255,216,77,0.18), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(123,148,255,0.16), transparent 50%),
+        radial-gradient(circle at 25% 85%, rgba(255,90,163,0.14), transparent 55%),
+        rgba(255,255,255,0.72);
     }
 
     .container{
-      width:min(1100px, 92%);
+      width:min(1120px, 92%);
       margin:0 auto;
     }
 
-    /* Top bar */
+    /* Topbar */
     .topbar{
       position: sticky;
       top:0;
-      z-index: 50;
-      background: rgba(255,255,255,0.68);
+      z-index: 99;
+      background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--stroke);
     }
@@ -77,179 +78,175 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:16px;
       padding: 14px 0;
-      gap: 14px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:14px;
-      min-width: 240px;
+      min-width: 280px;
     }
 
-    /* BIGGER logo */
+    /* BIG logo */
     .brand img{
-      width:84px;
-      height:84px;
-      border-radius: 50%;
+      width: 104px;
+      height: 104px;
+      border-radius: 22px;
       object-fit: cover;
       background: white;
-      border: 3px solid rgba(255,255,255,0.9);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
     }
 
     .brand-title{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
+      line-height: 1.05;
     }
 
     .brand-title strong{
       font-family: Fredoka, system-ui, sans-serif;
       font-size: 22px;
       letter-spacing: 0.2px;
+      display:block;
     }
 
     .brand-title span{
+      display:block;
+      margin-top:6px;
       font-size: 12px;
+      font-weight: 800;
       color: var(--muted);
-      margin-top: 4px;
-      font-weight: 600;
     }
 
-    .nav{
+    nav{
       display:flex;
-      align-items:center;
-      gap: 10px;
+      gap:10px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content:center;
     }
 
-    .nav a{
+    nav a{
       text-decoration:none;
       color: var(--ink);
-      font-weight: 700;
+      font-weight: 900;
+      font-size: 14px;
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,0.08);
       background: rgba(255,255,255,0.65);
-      transition: transform .15s ease, background .15s ease;
+      transition: 0.2s;
     }
-    .nav a:hover{
+
+    nav a:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,0.9);
     }
 
     .cta{
+      min-width: 250px;
       display:flex;
-      align-items:center;
-      gap: 10px;
-      justify-content: flex-end;
-      min-width: 200px;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap: wrap;
     }
 
     .btn{
-      border:0;
-      cursor:pointer;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 12px 18px;
-      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      transition: transform .15s ease, filter .15s ease;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
-      user-select:none;
+      justify-content:center;
+      gap:8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 900;
+      font-size: 14px;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+      transition:0.2s;
       white-space: nowrap;
+      cursor:pointer;
     }
-
-    .btn-primary{
-      color: white;
-      background: linear-gradient(135deg, var(--pink), var(--blue));
-    }
-    .btn-primary:hover{ transform: scale(1.03); filter: saturate(1.05); }
 
     .btn-dark{
-      color: white;
-      background: #111;
+      background:#111;
+      color:white;
+      border-color:#111;
     }
-    .btn-dark:hover{ transform: scale(1.03); }
+    .btn-dark:hover{ transform: translateY(-1px); }
+
+    .btn-pop{
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+      color:white;
+      border-color: rgba(255,255,255,0.0);
+    }
+    .btn-pop:hover{ transform: translateY(-1px); filter:saturate(1.05); }
 
     /* HERO */
-    .hero{
-      padding: 44px 0 10px;
+    header.hero{
+      padding: 34px 0 14px;
     }
 
     .hero-card{
-      border-radius: var(--radius);
       background: var(--card);
       border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 34px;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,216,77,0.25), transparent 55%),
-        radial-gradient(circle at 85% 30%, rgba(110,139,255,0.20), transparent 55%),
-        radial-gradient(circle at 40% 110%, rgba(255,90,163,0.18), transparent 55%);
-      pointer-events:none;
     }
 
     .hero-grid{
-      position:relative;
       display:grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-      align-items: center;
+      gap: 18px;
+      align-items: start;
     }
 
     .hero h1{
       font-family: Fredoka, system-ui, sans-serif;
-      font-size: clamp(40px, 5.2vw, 76px);
+      font-size: clamp(40px, 5.4vw, 76px);
+      line-height: 0.95;
       margin: 0 0 10px;
-      letter-spacing: 0.2px;
+      letter-spacing: -0.4px;
+    }
+
+    .hero .slogan{
+      font-weight: 1000;
+      font-size: 16px;
+      margin: 6px 0 12px;
+      color: rgba(0,0,0,0.72);
     }
 
     .hero p{
       margin: 0;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
+      font-weight: 700;
+      line-height: 1.65;
       max-width: 62ch;
-      font-weight: 600;
     }
 
-    .chips{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .pills{
       margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
+    .pill{
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.75);
-      font-weight: 800;
+      font-weight: 1000;
       font-size: 13px;
+      border: 2px solid transparent;
+      background: rgba(255,255,255,0.7);
     }
-    .chip.lemon{ border-color: rgba(255,216,77,0.8); }
-    .chip.rasp{ border-color: rgba(255,90,163,0.7); }
-    .chip.blue{ border-color: rgba(110,139,255,0.7); }
-    .chip.choco{ border-color: rgba(40,40,40,0.35); }
-    .chip.jam{ border-color: rgba(255,134,189,0.7); }
+
+    /* keep palette: lemon/pink/blue + jam */
+    .pill.lemon{ background: var(--lemonSoft); border-color: var(--lemon); }
+    .pill.straw{ background: var(--pinkSoft); border-color: var(--pink); }
+    .pill.blue{ background: var(--blueSoft); border-color: var(--blue); }
+    .pill.jam{ background: var(--jamSoft); border-color: var(--jam); }
+    .pill.nut{ background: rgba(255,235,225,0.9); border-color: rgba(0,0,0,0.14); }
 
     .hero-side{
       background: var(--card2);
@@ -257,63 +254,62 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-      position:relative;
     }
 
     .hero-side h3{
       font-family: Fredoka, system-ui, sans-serif;
-      margin: 0 0 10px;
+      margin:0 0 10px;
       font-size: 22px;
     }
 
     .hero-side ul{
-      margin: 0;
+      margin:0;
       padding-left: 18px;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 800;
       line-height: 1.7;
     }
 
     .hero-actions{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
       margin-top: 18px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     /* Sections */
     section{
-      padding: 26px 0 10px;
+      padding: 20px 0;
     }
 
-    .section-title{
+    .section-head{
       display:flex;
-      align-items: baseline;
       justify-content: space-between;
-      gap: 14px;
+      align-items: baseline;
+      gap: 12px;
       margin: 18px 0 12px;
     }
 
-    .section-title h2{
+    .section-head h2{
       font-family: Fredoka, system-ui, sans-serif;
+      margin:0;
       font-size: 34px;
-      margin: 0;
+      letter-spacing:-0.2px;
     }
 
-    .section-title p{
+    .section-head p{
       margin:0;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 800;
     }
 
-    /* Menu grid */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
 
-    .menu-card{
+    .item{
       grid-column: span 6;
       background: var(--card2);
       border: 1px solid rgba(0,0,0,0.08);
@@ -322,53 +318,74 @@
       padding: 18px;
     }
 
-    .menu-card .top{
+    .item .top{
       display:flex;
-      align-items:flex-start;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
+      align-items:flex-start;
     }
 
-    .menu-card h3{
+    .item h3{
       font-family: Fredoka, system-ui, sans-serif;
-      margin: 0;
+      margin:0;
       font-size: 22px;
     }
 
     .price{
-      font-weight: 900;
+      font-weight: 1000;
       padding: 10px 12px;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255,216,77,0.45), rgba(255,90,163,0.25));
+      background: rgba(255,216,77,0.35);
       border: 1px solid rgba(0,0,0,0.08);
       white-space: nowrap;
     }
 
-    .menu-card p{
+    .item p{
       margin: 10px 0 0;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 800;
       line-height: 1.55;
     }
 
-    .badges{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .tags{
       margin-top: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
     }
 
-    .badge{
+    .tag{
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 1000;
       padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.75);
     }
 
-    /* About + Order cards */
-    .wide-card{
+    /* Reviews */
+    .review{
+      grid-column: span 4;
+      background: var(--card2);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+      padding: 18px;
+    }
+
+    .review .stars{
+      font-weight: 1000;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .review .name{
+      margin-top: 10px;
+      font-weight: 1000;
+      color: rgba(0,0,0,0.78);
+    }
+
+    /* Subscribe */
+    .wide{
       background: var(--card2);
       border: 1px solid rgba(0,0,0,0.08);
       border-radius: var(--radius);
@@ -384,74 +401,114 @@
 
     .label{
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 1000;
       letter-spacing: .5px;
       text-transform: uppercase;
       color: rgba(0,0,0,0.55);
       margin-bottom: 8px;
     }
 
-    .mini{
-      color: var(--muted);
-      font-weight: 600;
-      line-height: 1.6;
-      margin: 0;
+    .field{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
     }
 
-    /* Footer */
+    input[type="email"]{
+      flex: 1 1 220px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      font-weight: 700;
+      outline: none;
+      background: rgba(255,255,255,0.9);
+    }
+
+    input[type="email"]:focus{
+      border-color: rgba(255,90,163,0.6);
+      box-shadow: 0 0 0 4px rgba(255,90,163,0.12);
+    }
+
+    /* Social icons (inline SVG) */
+    .social{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+
+    .icon-btn{
+      width:44px;
+      height:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      transition:0.2s;
+      text-decoration:none;
+    }
+    .icon-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.95); }
+    .icon-btn svg{ width:22px; height:22px; fill: rgba(0,0,0,0.75); }
+
     footer{
       margin-top: 28px;
       padding: 26px 0 40px;
       text-align:center;
       color: rgba(0,0,0,0.65);
-      font-weight: 700;
+      font-weight: 1000;
     }
 
-    /* Responsive */
     @media (max-width: 900px){
       .hero-grid{ grid-template-columns: 1fr; }
-      .cta{ min-width: auto; }
-      .brand{ min-width: auto; }
-      .menu-card{ grid-column: span 12; }
+      .item{ grid-column: span 12; }
+      .review{ grid-column: span 12; }
       .two-col{ grid-template-columns: 1fr; }
-      .brand img{ width:76px; height:76px; }
+      .brand img{ width:92px; height:92px; }
+      .cta{ min-width:auto; }
+      .brand{ min-width:auto; }
     }
 
     @media (max-width: 520px){
-      .nav a{ padding: 9px 12px; font-size: 13px; }
-      .btn{ padding: 11px 14px; }
+      nav a{ padding: 9px 12px; font-size: 13px; }
       .hero-card{ padding: 22px; }
-      .brand img{ width:68px; height:68px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="page-overlay">
+  <div class="overlay">
 
-    <!-- TOP BAR -->
+    <!-- TOPBAR -->
     <div class="topbar">
       <div class="container">
         <div class="topbar-inner">
+
           <div class="brand">
-            <!-- YOUR LOGO FILE (root) -->
-            <img src="assetslogo.jpg" alt="My Cookie Crumble logo" />
+            <!-- Your logo in repo root -->
+            <img src="assetslogo.jpg" alt="My Grandma'S Jam logo">
             <div class="brand-title">
-              <strong>My Cookie Crumble</strong>
-              <span>Lemon • Berries • Chips • Jams</span>
+              <strong>My Grandma'S Jam</strong>
+              <span>Old-school comfort • fresh fruit • nutty spreads</span>
             </div>
           </div>
 
-          <nav class="nav" aria-label="Primary">
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About</a>
-            <a href="#order">Order</a>
+          <nav aria-label="Primary">
+            <a href="#jams">Jams</a>
+            <a href="#spreads">Nut Spreads</a>
+            <a href="#seasonal">Seasonal</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#subscribe">Subscribe</a>
           </nav>
 
           <div class="cta">
-            <a class="btn btn-dark" href="#order">Order Now</a>
+            <a class="btn btn-pop" href="#menu">Explore</a>
+            <a class="btn btn-dark" href="#order">Order</a>
           </div>
+
         </div>
       </div>
     </div>
@@ -462,200 +519,368 @@
         <div class="hero-card">
           <div class="hero-grid">
             <div>
-              <h1>Classic Flavors</h1>
+              <h1>Jams + Nut Spreads</h1>
+              <div class="slogan">Handmade like grandma used to — cozy, bright, and real.</div>
               <p>
-                Warm, cozy cookies made for lemon lovers, berry fans, chocolate chip cravings,
-                and jam-filled comfort. Fresh ingredients. Big comfort energy.
+                Welcome to <strong>My Grandma'S Jam</strong> — small-batch jams and creamy nut spreads made with seasonal fruits.
+                Perfect for toast, pancakes, yogurt… and honestly, straight from the spoon.
               </p>
 
-              <div class="chips" aria-label="Ingredients">
-                <div class="chip lemon">🍋 Lemon</div>
-                <div class="chip rasp">🍓 Raspberry</div>
-                <div class="chip blue">🫐 Blueberry</div>
-                <div class="chip choco">🍫 Chocolate chips</div>
-                <div class="chip jam">🍯 Jams</div>
+              <div class="pills" aria-label="Signature ingredients">
+                <span class="pill lemon">Lemon 🍋</span>
+                <span class="pill straw">Strawberry 🍓</span>
+                <span class="pill blue">Blueberry 🫐</span>
+                <span class="pill jam">Jams 🍯</span>
+                <span class="pill nut">Nut Spreads 🥜</span>
               </div>
 
               <div class="hero-actions">
-                <a class="btn btn-primary" href="#menu">See the Menu</a>
-                <a class="btn btn-dark" href="#order">Order on WhatsApp</a>
+                <a class="btn btn-pop" href="#menu">See Menu</a>
+                <a class="btn btn-dark" href="#subscribe">Get Drops</a>
               </div>
             </div>
 
             <aside class="hero-side">
-              <h3>Today’s vibe</h3>
+              <h3>What you’ll love</h3>
               <ul>
-                <li>Soft center, golden edges</li>
-                <li>Bright lemon + berry swirl</li>
-                <li>Chocolate chips in every bite</li>
-                <li>Jam pockets (optional upgrade)</li>
+                <li>Seasonal fruits (fresh taste)</li>
+                <li>Classic jams + new twists</li>
+                <li>Nut spreads: creamy, cozy, rich</li>
+                <li>Limited batches — always fresh</li>
               </ul>
+
+              <div class="label" style="margin-top:14px;">Follow us</div>
+              <div class="social">
+                <!-- Replace # with your real links -->
+                <a class="icon-btn" href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+                </a>
+                <a class="icon-btn" href="#" aria-label="TikTok">
+                  <svg viewBox="0 0 24 24"><path d="M14 2h3c.1 2.1 1.2 3.8 3 4.6V10c-1.9-.1-3.6-.8-5-2v7.2c0 4.1-3.3 6.8-7.1 6.8C4.3 22 2 19.6 2 16.7c0-3 2.5-5.6 5.8-5.6.7 0 1.4.1 2 .4V15c-.5-.3-1.1-.5-1.8-.5-1.4 0-2.5 1-2.5 2.2 0 1.3 1.1 2.2 2.4 2.2 1.9 0 3.1-1.2 3.1-3.6V2z"/></svg>
+                </a>
+                <a class="icon-btn" href="#" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-4 1.6-4 4v3H7v3h3v6h3v-6h3l1-3h-4v-3c0-.6.4-1 1-1z"/></svg>
+                </a>
+                <a class="icon-btn" href="#" aria-label="WhatsApp">
+                  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.4-5.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1l-.6.7c-.1.1-.2.1-.4 0a6.6 6.6 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.8c-.1-.2 0-.3.1-.4l.4-.5c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 2 0 1.2.8 2.3.9 2.4.1.2 1.6 2.6 4 3.6.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.2-.6 1.4-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+                </a>
+              </div>
             </aside>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- MENU -->
+    <!-- MENU (anchor for Explore) -->
     <section id="menu">
       <div class="container">
-        <div class="section-title">
-          <h2>Pick Your Crumble</h2>
-          <p>Limited batches • baked fresh</p>
+
+        <!-- JAMS -->
+        <div class="section-head" id="jams">
+          <h2>Jams</h2>
+          <p>Small batch • seasonal rotation</p>
         </div>
 
         <div class="grid">
-          <article class="menu-card">
+          <article class="item">
             <div class="top">
-              <h3>Lemon Berry Cloud</h3>
+              <h3>Orange Marmalade</h3>
+              <div class="price">25 MAD</div>
+            </div>
+            <p>Sweet citrus with a tiny bitter sparkle — classic grandma vibe.</p>
+            <div class="tags">
+              <span class="tag">🧡 Citrus</span>
+              <span class="tag">Winter favorite</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Lemon Jam</h3>
+              <div class="price">25 MAD</div>
+            </div>
+            <p>Bright, tangy, sunshine flavor — clean and fresh.</p>
+            <div class="tags">
+              <span class="tag">🍋 Zesty</span>
+              <span class="tag">Fresh</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Strawberry Jam</h3>
+              <div class="price">25 MAD</div>
+            </div>
+            <p>Soft, sweet berry jam — the cozy classic.</p>
+            <div class="tags">
+              <span class="tag">🍓 Classic</span>
+              <span class="tag">Spring pick</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Coing Jam (Quince)</h3>
+              <div class="price">28 MAD</div>
+            </div>
+            <p>Golden, floral, aromatic — your autumn comfort jar.</p>
+            <div class="tags">
+              <span class="tag">🍂 Autumn</span>
+              <span class="tag">Aromatic</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Fig Jam</h3>
+              <div class="price">28 MAD</div>
+            </div>
+            <p>Deep sweet flavor — amazing with toast or cheese boards.</p>
+            <div class="tags">
+              <span class="tag">🍈 Fig</span>
+              <span class="tag">Cozy</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Seasonal Fruit Drop</h3>
+              <div class="price">Varies</div>
+            </div>
+            <p>Limited jars using what’s freshest this week — ask us what’s available.</p>
+            <div class="tags">
+              <span class="tag">🌸 Seasonal</span>
+              <span class="tag">Limited batch</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- NUT SPREADS -->
+        <div class="section-head" id="spreads" style="margin-top:26px;">
+          <h2>Nut Spreads</h2>
+          <p>Creamy • rich • spoon-worthy</p>
+        </div>
+
+        <div class="grid">
+          <article class="item">
+            <div class="top">
+              <h3>Roasted Peanut Spread</h3>
+              <div class="price">30 MAD</div>
+            </div>
+            <p>Classic, smooth, and cozy — perfect with banana or toast.</p>
+            <div class="tags">
+              <span class="tag">🥜 Peanut</span>
+              <span class="tag">Creamy</span>
+            </div>
+          </article>
+
+          <article class="item">
+            <div class="top">
+              <h3>Almond Butter</h3>
               <div class="price">35 MAD</div>
             </div>
-            <p>Buttery lemon cookie with berry notes and a soft, cozy bite.</p>
-            <div class="badges">
-              <span class="badge">🍋 Lemon</span>
-              <span class="badge">🫐 Blueberry</span>
-              <span class="badge">🍯 Jam option</span>
+            <p>Nutty, soft, and elegant — a clean, rich spread.</p>
+            <div class="tags">
+              <span class="tag">🌰 Almond</span>
+              <span class="tag">Smooth</span>
             </div>
           </article>
 
-          <article class="menu-card">
+          <article class="item">
             <div class="top">
-              <h3>Raspberry Jam Kiss</h3>
-              <div class="price">38 MAD</div>
-            </div>
-            <p>Sweet raspberry cookie with a jam center for the “one more bite” feeling.</p>
-            <div class="badges">
-              <span class="badge">🍓 Raspberry</span>
-              <span class="badge">🍯 Jam filled</span>
-              <span class="badge">✨ Soft</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="top">
-              <h3>Blueberry Melt</h3>
-              <div class="price">38 MAD</div>
-            </div>
-            <p>Blueberry-forward cookie with a bright, fruity finish and cozy sweetness.</p>
-            <div class="badges">
-              <span class="badge">🫐 Blueberry</span>
-              <span class="badge">🍋 Hint of lemon</span>
-              <span class="badge">☁️ Fluffy</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="top">
-              <h3>Classic Choco Chip</h3>
-              <div class="price">32 MAD</div>
-            </div>
-            <p>Golden edges, gooey center, chocolate chips in every bite.</p>
-            <div class="badges">
-              <span class="badge">🍫 Chips</span>
-              <span class="badge">🔥 Fresh baked</span>
-              <span class="badge">⭐ Best seller</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="top">
-              <h3>Berry + Chips Remix</h3>
+              <h3>Hazelnut Cocoa Spread</h3>
               <div class="price">40 MAD</div>
             </div>
-            <p>Fruity berry cookie + chocolate chips — sweet, bright, and cozy.</p>
-            <div class="badges">
-              <span class="badge">🍓🫐 Berries</span>
-              <span class="badge">🍫 Chips</span>
-              <span class="badge">💗 Crowd favorite</span>
+            <p>Chocolatey comfort with toasted hazelnuts — dessert energy.</p>
+            <div class="tags">
+              <span class="tag">🌰 Hazelnut</span>
+              <span class="tag">🍫 Cocoa</span>
             </div>
           </article>
 
-          <article class="menu-card">
+          <article class="item">
             <div class="top">
-              <h3>Box of 6</h3>
-              <div class="price">190 MAD</div>
+              <h3>Jam + Nut Duo Jar</h3>
+              <div class="price">45 MAD</div>
             </div>
-            <p>Mix & match your favorites. Perfect for sharing… or not 😄</p>
-            <div class="badges">
-              <span class="badge">🎁 Giftable</span>
-              <span class="badge">🍯 Add jam fills</span>
-              <span class="badge">🚚 Delivery</span>
+            <p>Two layers in one jar: jam on top, nut spread under — best of both worlds.</p>
+            <div class="tags">
+              <span class="tag">🍯 + 🥜</span>
+              <span class="tag">Signature</span>
             </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEASONAL -->
+    <section id="seasonal">
+      <div class="container">
+        <div class="section-head">
+          <h2>Seasonal Fruit Concept</h2>
+          <p>Fresh fruits = better taste</p>
+        </div>
+
+        <div class="wide two-col">
+          <div>
+            <div class="label">Why seasonal?</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.7;">
+              Seasonal fruits taste brighter and feel more “real”. We rotate flavors to match what’s freshest,
+              so every drop feels special and homemade.
+            </p>
+          </div>
+
+          <div>
+            <div class="label">Season map</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.7;">
+              <strong>Spring:</strong> Strawberry + Lemon<br>
+              <strong>Summer:</strong> Blueberries + mixed berries<br>
+              <strong>Autumn:</strong> Fig + Coing (Quince)<br>
+              <strong>Winter:</strong> Orange marmalade + cozy cocoa
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>Customer Reviews</h2>
+          <p>Real comfort, real people</p>
+        </div>
+
+        <div class="grid">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.6;">
+              “The lemon jam is INSANE. Tastes like sunshine. I finished the jar in two days.”
+            </p>
+            <div class="name">— Sana</div>
+          </article>
+
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.6;">
+              “Fig jam + hazelnut cocoa spread… that combo is dangerous (in the best way).”
+            </p>
+            <div class="name">— Youssef</div>
+          </article>
+
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.6;">
+              “The quince jam feels like something my grandma made. So cozy and fragrant.”
+            </p>
+            <div class="name">— Chaima</div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
+    <!-- SUBSCRIBE -->
+    <section id="subscribe">
       <div class="container">
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Cozy, simple, quality</p>
+        <div class="section-head">
+          <h2>Subscribe for New Drops</h2>
+          <p>Seasonal jars • limited batches</p>
         </div>
 
-        <div class="wide-card two-col">
+        <div class="wide two-col">
           <div>
-            <div class="label">Our idea</div>
-            <p class="mini">
-              My Cookie Crumble is all about turning ordinary days into cozy ones —
-              bright lemon, sweet berries, chocolate chips, and optional jam centers.
+            <div class="label">Be first</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.7;">
+              Get updates when new seasonal fruit drops are available (and when nut spreads restock).
             </p>
+
+            <form class="field" onsubmit="return fakeSubscribe(event)">
+              <input type="email" id="email" placeholder="Enter your email" required>
+              <button class="btn btn-pop" type="submit">Subscribe</button>
+            </form>
+
+            <p id="subMsg" style="margin:10px 0 0; color:rgba(0,0,0,0.7); font-weight:800;"></p>
           </div>
 
           <div>
-            <div class="label">How we bake</div>
-            <p class="mini">
-              Small batches • fresh ingredients • soft center, golden edges.
-              Delivery-focused so you can enjoy the cozy without leaving home.
+            <div class="label">Social</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.7;">
+              Add your real social links in the code (replace the “#” links).
             </p>
+
+            <div class="social" style="margin-top:12px;">
+              <a class="icon-btn" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+              </a>
+              <a class="icon-btn" href="#" aria-label="TikTok">
+                <svg viewBox="0 0 24 24"><path d="M14 2h3c.1 2.1 1.2 3.8 3 4.6V10c-1.9-.1-3.6-.8-5-2v7.2c0 4.1-3.3 6.8-7.1 6.8C4.3 22 2 19.6 2 16.7c0-3 2.5-5.6 5.8-5.6.7 0 1.4.1 2 .4V15c-.5-.3-1.1-.5-1.8-.5-1.4 0-2.5 1-2.5 2.2 0 1.3 1.1 2.2 2.4 2.2 1.9 0 3.1-1.2 3.1-3.6V2z"/></svg>
+              </a>
+              <a class="icon-btn" href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-4 1.6-4 4v3H7v3h3v6h3v-6h3l1-3h-4v-3c0-.6.4-1 1-1z"/></svg>
+              </a>
+              <a class="icon-btn" href="#order" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.4-5.6c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1l-.6.7c-.1.1-.2.1-.4 0a6.6 6.6 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.8c-.1-.2 0-.3.1-.4l.4-.5c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 2 0 1.2.8 2.3.9 2.4.1.2 1.6 2.6 4 3.6.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.2-.6 1.4-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- ORDER -->
     <section id="order">
       <div class="container">
-        <div class="section-title">
+        <div class="section-head">
           <h2>Order</h2>
-          <p>Fast + simple</p>
+          <p>Delivery only (for now)</p>
         </div>
 
-        <div class="wide-card two-col">
+        <div class="wide two-col">
           <div>
-            <div class="label">Step 1</div>
-            <p class="mini">Choose flavors + quantity (single cookies or box).</p>
-            <div style="height:10px"></div>
-
-            <div class="label">Step 2</div>
-            <p class="mini">Send your location + preferred delivery time.</p>
+            <div class="label">Message format</div>
+            <p style="margin:0; color:var(--muted); font-weight:800; line-height:1.7;">
+              1) Product + quantity<br>
+              2) Flavor (orange / lemon / strawberry / coing / fig)<br>
+              3) Delivery area + time
+            </p>
           </div>
 
           <div>
             <div class="label">WhatsApp</div>
-            <p class="mini">Tap the button to message your order.</p>
-            <div style="height:14px"></div>
-
-            <!-- Replace number -->
+            <!-- Replace with your real number -->
             <a class="btn btn-dark" href="https://wa.me/212600000000" target="_blank" rel="noopener">
               Order on WhatsApp
             </a>
-
-            <div style="height:14px"></div>
-            <p class="mini" style="font-size:13px; opacity:0.85;">
-              Tip: Save this number and message “Menu” to reorder quickly.
-            </p>
+            <div style="height:10px"></div>
+            <a class="btn btn-pop" href="#jams">Back to Menu</a>
           </div>
         </div>
       </div>
     </section>
 
     <footer>
-      Baked with love 🍪✨ • My Cookie Crumble
+      Handmade with love 🍯✨ — My Grandma'S Jam
     </footer>
 
   </div>
+
+  <script>
+    function fakeSubscribe(e){
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const msg = document.getElementById("subMsg");
+      if(!email){
+        msg.textContent = "Please enter your email.";
+        return false;
+      }
+      msg.textContent = "✅ You’re subscribed! (Demo) — later we can connect a real email system.";
+      document.getElementById("email").value = "";
+      return false;
+    }
+  </script>
 </body>
 </html>
+```0
 

@@ -6,12 +6,20 @@
   <title>My Cookie Crumble</title>
 
   <style>
-   body {
-    margin: 0;
-    font-family: 'Poppins', Arial, sans-serif;
-    color: #4b2a2a;
-    background: linear-gradient(180deg, #fffdf7, #ffeef3);
-  }
+  body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #4b2a2a;
+
+  background-image: 
+    url("raspberry.png"),
+    url("lemon.png"),
+    linear-gradient(180deg, #fffdf7, #ffeef3);
+
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: left top, right bottom, center;
+  background-size: 300px, 300px, cover;
+}
 
   /* HEADER */
   header {
@@ -23,6 +31,13 @@
     animation: gradientMove 12s ease infinite;
     position: relative;
     overflow: hidden;
+    header {
+  background-image: url("cookie1.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
   }
 
   @keyframes gradientMove {
